@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_091308) do
+ActiveRecord::Schema.define(version: 2019_08_13_114611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "end_date"
+    t.bigint "superhero_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.index ["superhero_id"], name: "index_bookings_on_superhero_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "powers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+  end
+
+  create_table "superheros", force: :cascade do |t|
+    t.string "name"
+    t.text "bio"
+    t.string "image"
+    t.integer "price_per_day"
+    t.bigint "power_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["power_id"], name: "index_superheros_on_power_id"
+    t.index ["user_id"], name: "index_superheros_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +61,8 @@ ActiveRecord::Schema.define(version: 2019_08_13_091308) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "superheros"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "superheros", "powers"
+  add_foreign_key "superheros", "users"
 end

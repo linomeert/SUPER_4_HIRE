@@ -1,0 +1,18 @@
+<h1>Superheroes in Brussels</h1>
+
+<div class="cards">
+  <% @superheros.each do |superhero| %>
+    <div class="card-trip">
+      <div class="image" style="background-image:url(<%= superhero.image %>)"></div>
+      <div class="card-trip-infos">
+        <div class="text">
+          <h3><%= superhero.name %></h3>
+          <p><%= superhero.power.name %></p>
+          <p>3km away</p>
+        </div>
+        <h2 class="card-trip-pricing">superhero.price_per_day</h2>
+      </div>
+    </div>
+  <% end %>
+</div>
+
