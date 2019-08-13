@@ -3,16 +3,17 @@ class SuperherosController < ApplicationController
 
   def index
     @superheros = Superhero.all
-
   end
 
   def new
+    @superhero = Superhero.new
+    @power = Power.new
   end
 
   def create
     @superhero = Superhero.new(superhero_params)
     if @superhero.save
-      redirect_to superhero_path(@superhero)
+      redirect_to user_superhero_path(@superhero)
     else
       render :new
     end
