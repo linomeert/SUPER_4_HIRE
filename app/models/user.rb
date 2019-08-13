@@ -10,7 +10,5 @@ class User < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :superheros, dependent: :destroy
-  has_many :powers, through: :superheros
-
-
+  #has_many :powers, through: :superheros
 end
