@@ -12,16 +12,16 @@ class SuperherosController < ApplicationController
 
   def create
     @superhero = Superhero.new(superhero_params)
+    @superhero.power = Power.find(params[:superhero][:power_id])
+    @superhero.user = User.find(params[:user_id])
     if @superhero.save
-      redirect_to user_superhero_path(@superhero)
+      redirect_to user_superhero_path(current_user, @superhero)
     else
       render :new
     end
   end
 
   def show
-    @powers = @superhero.power
-    @power = Power.new
   end
 
   def edit

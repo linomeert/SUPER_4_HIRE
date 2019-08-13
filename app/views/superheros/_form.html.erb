@@ -1,4 +1,4 @@
-<%= simple_form_for [@superhero] do |f| %>
+<%= simple_form_for([current_user, @superhero]) do |f| %>
   <%= f.input :name %>
   <%= f.input :bio %>
   <%= f.input :image %>

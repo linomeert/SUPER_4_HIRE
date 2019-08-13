@@ -1,6 +1,7 @@
 class Superhero < ApplicationRecord
   belongs_to :power
   belongs_to :user
+
   has_many :bookings, dependent: :destroy
 
   validates :name, presence: true
