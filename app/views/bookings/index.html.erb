@@ -8,60 +8,85 @@
   <% else %>
     <div class="bookings">
       <% @pending_bookings.each do |booking| %>
-        <div class="booking_box">
-          <h4>
-            <% if booking.superhero.user == @user %>
-              Accept booking with user <%= booking.user.first_name %>
-            <% else %>
-              Booking with superhero <%= booking.superhero.name %>
-            <% end %>
-          </h4>
 
-          <p><%= booking.description %></p>
-          <ul>
-            <li>from: <%= booking.start_date %></li>
-            <li>to :<%= booking.end_date %></li>
-          </ul>
+          <div class="booking_box">
+            <div class="row">
+            <div class="col-md-100 col-lg-4">
+              <% if booking.superhero.user == @user %>
+                <div class="booking_img" style="background: url(<%= booking.user.photo %>)"></div>
+              <% else %>
+                <div class="booking_img" style="background: url(<%= booking.superhero.image %>)"></div>
+              <% end %>
+            </div>
+            <div class="col-md-100 col-lg-7">
+              <h5>
+                <% if booking.superhero.user == @user %>
+                  Accept booking with user <%= booking.user.first_name %>
+                <% else %>
+                  Booking with superhero <%= booking.superhero.name %>
+                <% end %>
+              </h5>
+
+              <p><%= booking.description %></p>
+              <ul>
+                <li>from: <%= booking.start_date %></li>
+                <li>to :<%= booking.end_date %></li>
+              </ul>
 
 
 
-          <% if booking.superhero.user == @user %>
-            <%= link_to "Accept", user_superhero_booking_path(id: booking.id), method: "patch" %>
-            <a href="#">Refuse</a>
-          <% else %>
-            <p>Waiting for approval from <%= booking.superhero.name %></p>
-          <% end %>
-
+              <% if booking.superhero.user == @user %>
+                <%= link_to "Accept", user_superhero_booking_path(id: booking.id), method: "patch" %>
+                <a href="#">Refuse</a>
+              <% else %>
+                <p>Waiting for approval from <%= booking.superhero.name %></p>
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-  <% end %>
+ <% end %>
+
+
 
 
   <h2>Accepted bookings for <%= @user.first_name %></h2>
 
-  <% if @accepted_bookings.empty? %>
-    <p>No accepted bookings</p>
-  <% else %>
-  <div class="bookings">
-    <% @accepted_bookings.each do |booking| %>
-      <div class="booking_box">
-        <h4>
-          <% if booking.superhero.user == @user %>
-            Booking with <%= booking.user.first_name %>
-          <% else %>
-            Booking with <%= booking.superhero.name %>
-          <% end %>
-        </h4>
-        <p><%= booking.description %></p>
-        <ul>
-          <li>from: <%= booking.start_date %></li>
-          <li>to :<%= booking.end_date %></li>
-        </ul>
+    <% if @accepted_bookings.empty? %>
+      <p>No accepted bookings</p>
+    <% else %>
+    <div class="bookings">
+      <% @accepted_bookings.each do |booking| %>
 
-      </div>
-    <% end %>
-  </div>
+          <div class="booking_box">
+            <div class="row">
+              <div class="col-md-100 col-lg-4">
+
+                  <% if booking.superhero.user == @user %>
+                    <div class="booking_img" style="background: url(<%= booking.user.photo %>)"></div>
+                  <% else %>
+                    <div class="booking_img" style="background: url(<%= booking.superhero.image %>)"></div>
+                  <% end %>
+              </div>
+              <div class="col-md-100 col-lg-7">
+                <h5>
+                  <% if booking.superhero.user == @user %>
+                    Booking with user <%= booking.user.first_name %>
+                  <% else %>
+                    Booking with superhero <%= booking.superhero.name %>
+                  <% end %>
+                </h5>
+                <p><%= booking.description %></p>
+                <ul>
+                  <li>from: <%= booking.start_date %></li>
+                  <li>to :<%= booking.end_date %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      <% end %>
+     </div>
   <% end %>
 </div>
 
