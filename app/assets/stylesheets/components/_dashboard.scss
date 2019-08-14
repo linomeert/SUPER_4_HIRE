@@ -1,0 +1,29 @@
+.bookings {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.booking_box{
+  background:white;
+  padding:20px;
+  border-radius:4px;
+
+}
+
+.dashboard {
+  padding: 40px 0px,
+}
+
+.dashboard h2 {
+  margin:20px 0px;
+}
+
+.booking_img {
+    background: url(https://i.pinimg.com/736x/e9/79/01/e97901a….jpg);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-size: cover !important;
+    background-position: center !important;
+}

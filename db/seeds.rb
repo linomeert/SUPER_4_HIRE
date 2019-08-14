@@ -6,9 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first
 
+
 puts "seeding new powers"
 
-p flight = Power.new(
+fligh = Power.new(
     name: "Flight",
     description: "an act or instance of passing through the air by the use of wings or anything else"
 )
