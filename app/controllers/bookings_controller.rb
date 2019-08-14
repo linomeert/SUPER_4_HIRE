@@ -1,7 +1,9 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
     @user = current_user
+    @bookings = Booking.where(user: current_user)
+    @pending_bookings = @bookings.where.not(accepted: true)
+    @accepted_bookings = @bookings.where(accepted: true)
   end
 
   def new
@@ -12,6 +14,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.accepted = false
     @booking.user = User.find(params[:user_id])
     @booking.superhero = Superhero.find(params[:superhero_id])
     if @booking.save
@@ -21,6 +24,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def acceptbooking
+    raise
+    @booking = booking
+    @booking.accepted = true
+    @booking.save
+    render index
+  end
+
   def show
   end
 
@@ -28,9 +39,10 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(booking_params)
+    @booking = Booking.find(params[:id])
+    @booking.accepted = true
     @booking.save
-    redirect_to booking_path(@booking)
+    redirect_to user_superhero_bookings_path
   end
 
   def destroy
@@ -46,6 +58,6 @@ class BookingsController < ApplicationController
   def booking_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:booking).permit(:start_date, :end_date, :description)
+    params.require(:booking).permit(:start_date, :end_date, :description, :user_id, :superhero_id, :action)
   end
 end

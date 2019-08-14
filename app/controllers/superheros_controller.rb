@@ -1,4 +1,5 @@
 class SuperherosController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :set_superhero, only: [:show, :edit, :update]
 
   def index
@@ -15,6 +16,9 @@ class SuperherosController < ApplicationController
     @superhero.power = Power.find(params[:superhero][:power_id])
     @superhero.user = User.find(params[:user_id])
     if @superhero.save
+      @user = User.find(params[:user_id])
+      @user.has_super_hero = true
+      @user.save
       redirect_to user_superhero_path(current_user, @superhero)
     else
       render :new
