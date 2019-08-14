@@ -1,0 +1,62 @@
+
+.container-info {
+
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 50px;
+
+}
+
+.profile-text {
+
+width: 1000px;
+
+}
+
+.newbtn {
+  justify-content: center;
+  border-radius: 30px;
+  padding: 20px;
+  background-color: black;
+}
+
+
+.newbtn:hover {
+  background-color: #f44336;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+
+
+.superhero-name {
+
+  margin-bottom: 80px;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Stencil Std", "fantasy";
+
+}
+
+.power {
+
+  margin-bottom: 70px;
+
+}
+
+.form_add_booking {
+
+  text-align: center;
+  justify-content: center;
+  width: 420px;
+  background-color: #0074D9;
+  padding: 20px;
+
+
+}
+
+.form_add_booking label {
+
+    color: white;
+}

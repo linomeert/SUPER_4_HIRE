@@ -10,7 +10,7 @@ puts "deleting existing powers"
 
 puts "seeding new powers"
 
-p flight = Power.new(
+fligh = Power.new(
     name: "Flight",
     description: "Very strong dude"
 )
