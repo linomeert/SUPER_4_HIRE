@@ -12,7 +12,7 @@ Power.destroy_all
 
 puts "seeding new powers"
 
-p flight = Power.new(
+fligh = Power.new(
     name: "Flight",
     description: "Very strong dude"
 )
