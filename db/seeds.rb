@@ -4,16 +4,28 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.first
 
-flight = Power.new(
+puts "deleting existing powers"
+
+Power.destroy_all
+
+puts "seeding new powers"
+
+p flight = Power.new(
     name: "Flight",
     description: "Very strong dude"
 )
 
 flight.save!
 
-superhero = Superhero.new(
+puts "detroying existing sps"
+
+Superhero.destroy_all
+
+puts "seeding sps"
+
+p superhero = Superhero.new(
     name: "Iron Man",
     bio: "Very strong dude",
     image: "https://i.pinimg.com/736x/e9/79/01/e97901ac963823878b70024959d56743.jpg",
@@ -22,7 +34,7 @@ superhero = Superhero.new(
     power: flight
 )
 
-superhero2 = Superhero.new(
+p superhero2 = Superhero.new(
     name: "Captain america",
     bio: "Very strong dude",
     image: "https://i.pinimg.com/736x/e9/79/01/e97901ac963823878b70024959d56743.jpg",
@@ -35,5 +47,7 @@ superhero2 = Superhero.new(
 
 superhero.save!
 superhero2.save!
+
+puts "Done with the seed!"
 
 

@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.heroimg {
+  height:400px;
+  width:100%;
+  background-size:cover !important;
+  background-position: center center !important;
+}

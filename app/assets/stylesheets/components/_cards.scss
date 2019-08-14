@@ -1,5 +1,31 @@
-.cards {
-  display:grid;
+
+
+h1.herotitle {
+  text-align:center;
+  margin-top:40px;
+}
+
+.card-image {
+    background-size: cover;
+    height: 200px
+}
+.cardsbox {
+
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+ align-items: flex-start;
+ align-content: flex-start | space-between;
+ margin-top: 70px;
+
+}
+
+.card {
+
+  width: 300px;
+  margin: 25px;
+
 
 }
 
@@ -7,29 +33,41 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+
 }
 
-.card-trip > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-trip h2 {
+.price {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-trip p {
-  font-size: 12px;
+.text {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.distance {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
   opacity: .7;
   margin: 0;
+  text-align: center;
+  height: 50px;
+  margin-top: 30px;
 }
 
 
 .card-trip .card-trip-infos {
-  padding: 16px;
+  padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -42,3 +80,5 @@
   top: -20px;
   width: 40px;
 }
+
+

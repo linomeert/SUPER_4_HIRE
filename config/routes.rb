@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'bookings/index'
+  get 'bookings/new'
+  get 'bookings/show'
+  get 'bookings/edit'
   root to: 'pages#home'
 
   devise_for :users
@@ -8,8 +12,7 @@ Rails.application.routes.draw do
     resources :superheros do
       resources :bookings
     end
-    resources :bookings
   end
-  resources :superheros , only: [:show, :index]
-  resources :bookings, only: [:destroy]
+  # resources :superheros , only: [:show, :index]
+  # resources :bookings, only: [:destroy]
 end

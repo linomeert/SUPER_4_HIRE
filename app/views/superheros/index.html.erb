@@ -1,18 +1,29 @@
-<h1>Superheroes in Brussels</h1>
+<div class="container">
 
-<div class="cards">
+  <h1 class="herotitle">Superheroes in Brussels</h1>
+
+  <div class="cardsbox">
   <% @superheros.each do |superhero| %>
-    <div class="card-trip">
-      <div class="image" style="background-image:url(<%= superhero.image %>)"></div>
-      <div class="card-trip-infos">
-        <div class="text">
-          <h3><%= superhero.name %></h3>
-          <p><%= superhero.power.name %></p>
-          <p>3km away</p>
+  <div class="card">
+      <div class="card-trip">
+        <div class="card-image" style="background-image:url(<%= superhero.image %>)"></div>
+        <div class="name">
+          <p><%= superhero.name %></p>
         </div>
-        <h2 class="card-trip-pricing">superhero.price_per_day</h2>
+        <div class="card-trip-infos">
+          <div class="text">
+            <p><%= superhero.power.name %></p>
+          </div>
+          <div class="distance">
+            <p>3km away</p>
+          </div>
+          <div class="price">
+            <p><%= superhero.price_per_day %> euro </p>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
 
+  </div>
+  <% end %>
+  </div>
+</div>

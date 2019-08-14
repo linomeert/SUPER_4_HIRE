@@ -1,2 +1,23 @@
-<h1>Superheros#show</h1>
-<p>Find me in app/views/superheros/show.html.erb</p>
+<div class="container-profile">
+  <div class="profile-text">
+    <div class="superhero-name">
+      <p><%= @superhero.name %></p>
+    </div>
+    <div class="power">
+      <p><%= @superhero.power.name %></p>
+    </div>
+    <div class="heo-info">
+      <p><%= @superhero.bio %></p>
+    </div>
+  </div>
+    <div class="heroimg" style="background:url(<%= @superhero.image %>)">
+    </div>
+
+
+<%= simple_form_for [current_user, @superhero, @booking],  url: user_superhero_bookings_path(current_user, @superhero), method: :post do |f| %>
+  <%= f.input :description %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
+</div>

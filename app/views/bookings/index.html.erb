@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>All bookings for <%= @user.first_name %></h1>
+
+  <% @bookings.each do |booking| %>
+    <div class="booking_box">
+      <h3>Booking with <%= booking.superhero.name %></h3>
+      <p><%= booking.description %></p>
+      <ul>
+        <li>from: <%= booking.start_date %></li>
+        <li>to :<%= booking.end_date %></li>
+      </ul>
+
+    </div>
+  <% end %>
+</div>
