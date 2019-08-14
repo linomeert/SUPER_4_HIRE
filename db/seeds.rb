@@ -18,7 +18,7 @@ superhero = Superhero.new(
     bio: "Very strong dude",
     image: "https://i.pinimg.com/736x/e9/79/01/e97901ac963823878b70024959d56743.jpg",
     price_per_day: 10,
-    user_id:  2,
+    user_id:  1,
     power: flight
 )
 
@@ -27,7 +27,7 @@ superhero2 = Superhero.new(
     bio: "Very strong dude",
     image: "https://i.pinimg.com/736x/e9/79/01/e97901ac963823878b70024959d56743.jpg",
     price_per_day: 10,
-    user_id:  2,
+    user_id:  1,
     power: flight
 )
 
