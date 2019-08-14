@@ -1,0 +1,5 @@
+<%= simple_form_for([current_user, @superhero, @booking],  url: user_superhero_bookings_path) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
