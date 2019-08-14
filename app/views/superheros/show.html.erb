@@ -1,13 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="col-7"><h1><%= @superhero.name %></h1>
-    <p class="power"><%= @superhero.power.name %>
-    <p><%= @superhero.bio %></p>
+<div class="container-profile">
+  <div class="profile-text">
+    <div class="superhero-name">
+      <p><%= @superhero.name %></p>
+    </div>
+    <div class="power">
+      <p><%= @superhero.power.name %></p>
+    </div>
+    <div class="heo-info">
+      <p><%= @superhero.bio %></p>
+    </div>
   </div>
-  <div class="col-4">
-    <div class="heroimg" style="background:url('<%= @superhero.image %>');"></div>
+    <div class="heroimg" style="background:url(<%= @superhero.image %>)">
+    </div>
 
-  </div>
-  </div>
 
 </div>
