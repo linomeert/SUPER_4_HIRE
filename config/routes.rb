@@ -13,6 +13,6 @@ Rails.application.routes.draw do
       resources :bookings
     end
   end
-  # resources :superheros , only: [:show, :index]
-  # resources :bookings, only: [:destroy]
+  resources :superheros , only: [:show, :index]
+  resources :bookings, only: [:destroy]
 end

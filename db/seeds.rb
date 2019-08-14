@@ -8,8 +8,6 @@
 
 puts "deleting existing powers"
 
-Power.destroy_all
-
 puts "seeding new powers"
 
 p flight = Power.new(
