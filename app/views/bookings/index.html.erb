@@ -36,8 +36,16 @@
 
 
               <% if booking.superhero.user == @user %>
-                <%= link_to "Accept", user_superhero_booking_path(id: booking.id), method: "patch" %>
-                <a href="#">Refuse</a>
+                <%#= link_to "Accept", user_superhero_booking_path(id: booking.id), method: "patch" %>
+                <%= form_tag user_superhero_booking_path(id: booking.id), method: :patch do %>
+                <%= hidden_field_tag :query,
+                    params[:query], value: true,
+                    class: "form-control",
+                    placeholder: "Find a movie"
+                  %>
+                <%= submit_tag "Accept", class: "btn btn-primary" %>
+                <% end %>
+                <!-- <a href="#">Refuse</a> -->
               <% else %>
                 <p>Waiting for approval from <%= booking.superhero.name %></p>
               <% end %>
