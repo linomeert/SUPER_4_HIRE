@@ -1,6 +1,7 @@
 <%= simple_form_for([current_user, @superhero]) do |f| %>
   <%= f.input :name %>
   <%= f.input :bio %>
+  <%= f.input :address %>
   <%= f.input :image %>
   <%= f.association :power %>
   <%= f.input :price_per_day %>

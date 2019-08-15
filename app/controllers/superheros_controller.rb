@@ -3,7 +3,20 @@ class SuperherosController < ApplicationController
   before_action :set_superhero, only: [:show, :edit, :update]
 
   def index
-    @superheros = Superhero.all
+    #@superheros = Superhero.all
+    @superheros = Superhero.geocoded #returns flats with coordinates
+
+    @markers = @superheros.map do |superhero|
+      {
+        lat: superhero.latitude,
+        lng: superhero.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { superhero: superhero })
+      }
+    end
+  end
+
+  def mysuperheros
+    @superheros = Superhero.where('superhero.user = current_user')
   end
 
   def new
@@ -51,6 +64,6 @@ class SuperherosController < ApplicationController
   def superhero_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:superhero).permit(:name, :bio, :image, :price_per_day, :power, :image)
+    params.require(:superhero).permit(:name, :bio, :image, :price_per_day, :power, :image, :address)
   end
 end

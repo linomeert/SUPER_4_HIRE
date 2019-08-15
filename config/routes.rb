@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :superheros, only: [:create, :new, :update, :edit, :destroy, :show] do
+    resources :superheros, only: [:create, :new, :update, :edit, :destroy, :show, :mysuperheros] do
       resources :bookings
     end
   end
