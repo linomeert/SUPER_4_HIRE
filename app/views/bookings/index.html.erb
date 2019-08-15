@@ -58,8 +58,12 @@
 
 
               <% if booking.superhero.user == @user %>
-                <%= link_to "Accept", user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: true), method: "patch" %>
-                <%= link_to "Refuse", user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: "false"),method: "patch" %>
+                <%= link_to user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: true), method: "patch" do %>
+                <i class="fas fa-check-circle"></i>
+                <% end  %>
+                <%= link_to user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: "false"),method: "patch" do %>
+                <i class="fas fa-times-circle"></i>
+                <% end %>
               <% else %>
                 <p>Waiting for approval from <%= booking.superhero.name %></p>
               <% end %>

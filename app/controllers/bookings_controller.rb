@@ -5,9 +5,10 @@ class BookingsController < ApplicationController
 
     @bookings = Booking.where(user: current_user)
     @pending_bookings = @bookings.where(accepted: nil)
-    @accepted_bookings = @bookings.where("accepted = ? AND end_date < ?", true, Date.today)
+    @accepted_bookings = @bookings.where("accepted = ? AND end_date > ?", true, Date.today)
     @rejected_bookings = @bookings.where(accepted: false)
-    @past_bookings = @bookings.where("accepted = ? AND end_date > ?", true, Date.today)
+
+    @past_bookings = @bookings.where("accepted = ? AND end_date < ?", true, Date.today)
 
 
   end
@@ -45,13 +46,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    if params[:query].present?
-      @booking.accepted = true
-      @booking.save
-      redirect_to user_superhero_bookings_path
-    else
-      raise
-    end
+
     @booking.accepted = params[:accepted] == "true"
     @booking.save
     redirect_to user_superhero_bookings_path
