@@ -13,7 +13,7 @@
             <h3><%= @superhero.bio %><h3>
          </div>
       </div>
-      <div class="heroimg" style="background:url(<%= @superhero.image %>)"></div>
+      <div class="heroimg" style="background:url(<%= cl_image_path @superhero.image  %>)"></div>
 
 
 </div>
