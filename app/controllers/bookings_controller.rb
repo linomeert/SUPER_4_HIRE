@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
   def index
     @user = current_user
+    # @superhero = Superhero.find params[:superhero_id]
+
     @bookings = Booking.where(user: current_user)
     @pending_bookings = @bookings.where(accepted: nil)
     @accepted_bookings = @bookings.where("accepted = ? AND end_date < ?", true, Date.today)
@@ -43,6 +45,13 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    if params[:query].present?
+      @booking.accepted = true
+      @booking.save
+      redirect_to user_superhero_bookings_path
+    else
+      raise
+    end
     @booking.accepted = params[:accepted] == "true"
     @booking.save
     redirect_to user_superhero_bookings_path
