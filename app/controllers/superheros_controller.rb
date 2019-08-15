@@ -3,8 +3,11 @@ class SuperherosController < ApplicationController
   before_action :set_superhero, only: [:show, :edit, :update]
 
   def index
-    #@superheros = Superhero.all
-    @superheros = Superhero.geocoded #returns flats with coordinates
+    if params[:query].present?
+      @superheros = Superhero.geocoded.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @superheros = Superhero.geocoded
+    end
 
     @markers = @superheros.map do |superhero|
       {
@@ -13,10 +16,6 @@ class SuperherosController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { superhero: superhero })
       }
     end
-  end
-
-  def mysuperheros
-    @superheros = Superhero.where('superhero.user = current_user')
   end
 
   def new
