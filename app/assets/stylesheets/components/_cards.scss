@@ -9,24 +9,19 @@ h1.herotitle {
     background-size: cover;
     height: 200px
 }
-.cardsbox {
-
-
-
+.small_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .addcolumns {
-   display:grid;
+  display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 }
 
-.card {
-  max-width: 500px;
-  width: 100%;
-  margin:20px auto;
 
-}
 
 
 .card-trip {
@@ -85,6 +80,10 @@ h1.herotitle {
   .cardsbox {
     grid-template-columns: 1fr 1fr;
   }
+
+  .container.user_profil {
+      display: inherit !important;
+  }
 }
 
 @media(max-width: 768px) {
@@ -92,6 +91,36 @@ h1.herotitle {
     grid-template-columns: 1fr;
   }
 }
+   .card {
+        max-width: 500px;
+        width: 100%;
+        margin:20px auto;
+      }
 
+.small_container {
+  margin-top: 30px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  display: grid;
+  width: 100%;
+   .card {
+      width: 100%;
+      margin: 5px;
+      font-size: 2px;
+      .name{
+        font-size: 15px;
+        margin-top: 0px;
+        height:auto;
+      }
+      }
+  a {
+      height: 0px;
+  }
+  .card-image {
+      height: 170px;
+  }
 
-
+  .card-trip-infos {
+      display: none !important ;
+  }
+}

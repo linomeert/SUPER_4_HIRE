@@ -1,11 +1,31 @@
 <body>
-  <div class="container">
-    <div class="login_box">
+  <div class="container user_profil">
+    <div class="login_box user_profil">
       <div class="avatar-large prof-image" style="background-image:url(<%= cl_image_path @user.photo %>);"></div>
-<h1><%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></h1>
-<h2><%= @user.bio.capitalize %></h2>
-<h2><%= @user.email %></h2>
-<%= link_to "Edit Profil", edit_user_registration_path(@user), :class => "btn btn-primary"  %>
+        <h1><%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></h1>
+        <h2><%= @user.bio.capitalize %></h2>
+        <h2><%= @user.email %></h2>
+        <%= link_to "Edit Profil", edit_user_registration_path(@user), :class => "btn btn-primary"  %>
        </div>
+        <div class="small_container">
+          <% @superheroes.each do |superhero| %>
+            <%= link_to superhero_path(superhero) do %>
+              <div class="card superhero-intro">
+                <div class="card-trip">
+                    <div class="card-image" style="background-image:url(<%= cl_image_path( superhero.image, :width => 900, :height => 600  , :crop => :thumb, :gravity => :face )  %>)">
+                    </div>
+
+                    <div class="name">
+                      <p><%= superhero.name %></p>
+                    </div>
+
+                </div>
+              </div>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
     </div>
+  </div>
+
 </body>
