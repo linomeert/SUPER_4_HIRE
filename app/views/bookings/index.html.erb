@@ -1,43 +1,66 @@
 <div class="container dashboard">
   <h1>Bookings for <%= @user.first_name %></h1>
 
+  <div class="bookings">
+    <% if @rejected_bookings %>
+      <% @rejected_bookings.each do |booking| %>
+      <div class="booking_box ">
+        <div class="row">
+          <div class="col-md-100 col-lg-3">
+            <div class="smallerimg booking_img" style="background: url(<%= booking.superhero.image %>)"></div>
+          </div>
+          <div class="col-md-100 col-lg-9">
+            😭😭😭😭😭😭😭
+            <p><%= booking.superhero.name %> rejected your booking. </p>
+            <%= link_to "Okay then..", user_superhero_booking_path(@user, booking.superhero, booking), class: "okay", method: :delete %>
+
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+  </div>
+
   <h2>Pending bookings</h2>
 
   <% if @pending_bookings.empty? %>
     <p>No pending bookings</p>
   <% else %>
+
     <div class="bookings">
       <% @pending_bookings.each do |booking| %>
 
           <div class="booking_box">
             <div class="row">
-            <div class="col-md-100 col-lg-4">
-              <% if booking.superhero.user == @user %>
-                <div class="booking_img" style="background: url(<%= booking.user.photo %>)"></div>
-              <% else %>
-                <div class="booking_img" style="background: url(<%= booking.superhero.image %>)"></div>
-              <% end %>
-            </div>
-            <div class="col-md-100 col-lg-7">
-              <h5>
+              <div class="col-md-100 col-lg-4">
                 <% if booking.superhero.user == @user %>
-                  Accept booking with user <%= booking.user.first_name %>
+                  <div class="booking_img" style="background: url(<%= booking.user.photo %>)"></div>
                 <% else %>
-                  Booking with superhero <%= booking.superhero.name %>
+                  <div class="booking_img" style="background: url(<%= booking.superhero.image %>)"></div>
                 <% end %>
-              </h5>
+              </div>
+              <div class="col-md-100 col-lg-7">
+                <h5>
+                  <% if booking.superhero.user == @user %>
+                    Accept booking with user <%= booking.user.first_name %>
+                  <% else %>
+                    Booking with superhero <%= booking.superhero.name %>
+                  <% end %>
+                </h5>
 
-              <p><%= booking.description %></p>
-              <ul>
-                <li>from: <%= booking.start_date %></li>
-                <li>to :<%= booking.end_date %></li>
-              </ul>
+                <p><%= booking.description %></p>
+                <ul>
+                  <li>from: <%= booking.start_date %></li>
+                  <li>to :<%= booking.end_date %></li>
+                </ul>
 
 
 
               <% if booking.superhero.user == @user %>
-                <%= link_to "Accept", user_superhero_booking_path(id: booking.id), method: "patch" %>
-                <a href="#">Refuse</a>
+                <%= link_to "Accept", user_superhero_booking_path(id: booking.id, accepted: true), :action => "add_to_cart", method: "patch" %>
+                <%= link_to "Refuse", user_superhero_booking_path(id: booking.id, accepted: "false"), :action => "add_to_cart", method: "patch" %>
+
               <% else %>
                 <p>Waiting for approval from <%= booking.superhero.name %></p>
               <% end %>
@@ -46,19 +69,48 @@
         </div>
       <% end %>
     </div>
- <% end %>
+  <% end %>
+  <h2>Upcoming bookings</h2>
 
-
-
-
-  <h2>Accepted bookings for <%= @user.first_name %></h2>
-
-    <% if @accepted_bookings.empty? %>
-      <p>No accepted bookings</p>
-    <% else %>
+  <% if @accepted_bookings.empty? %>
+    <p>No accepted bookings</p>
+  <% else %>
     <div class="bookings">
       <% @accepted_bookings.each do |booking| %>
 
+          <div class="booking_box">
+            <div class="row">
+              <div class="col-md-100 col-lg-4">
+
+                  <% if booking.superhero.user == @user %>
+                    <div class="booking_img" style="background: url(<%= booking.user.photo %>)"></div>
+                  <% else %>
+                    <div class="booking_img" style="background: url(<%= booking.superhero.image %>)"></div>
+                  <% end %>
+              </div>
+              <div class="col-md-100 col-lg-7">
+                <h5>
+                  <% if booking.superhero.user == @user %>
+                    Booking with user <%= booking.user.first_name %>
+                  <% else %>
+                    Booking with superhero <%= booking.superhero.name %>
+                  <% end %>
+                </h5>
+                <p><%= booking.description %></p>
+                <ul>
+                  <li>from: <%= booking.start_date %></li>
+                  <li>to :<%= booking.end_date %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      <% end %>
+     </div>
+  <% end %>
+  <% if @past_bookings %>
+    <h2>Past bookings</h2>
+    <div class="bookings">
+      <% @past_bookings.each do |booking| %>
           <div class="booking_box">
             <div class="row">
               <div class="col-md-100 col-lg-4">

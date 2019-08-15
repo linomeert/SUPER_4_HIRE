@@ -2,8 +2,12 @@ class BookingsController < ApplicationController
   def index
     @user = current_user
     @bookings = Booking.where(user: current_user)
-    @pending_bookings = @bookings.where.not(accepted: true)
-    @accepted_bookings = @bookings.where(accepted: true)
+    @pending_bookings = @bookings.where(accepted: nil)
+    @accepted_bookings = @bookings.where("accepted = ? AND end_date < ?", true, Date.today)
+    @rejected_bookings = @bookings.where(accepted: false)
+    @past_bookings = @bookings.where("accepted = ? AND end_date > ?", true, Date.today)
+
+
   end
 
   def new
@@ -14,13 +18,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.accepted = false
     @booking.user = User.find(params[:user_id])
     @booking.superhero = Superhero.find(params[:superhero_id])
     if @booking.save
       redirect_to user_superhero_bookings_path(current_user, @booking)
     else
-      render :new
+      redirect_to superhero_path(@booking.superhero)
     end
   end
 
@@ -40,13 +43,15 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.accepted = true
+    @booking.accepted = params[:accepted] == "true"
     @booking.save
     redirect_to user_superhero_bookings_path
   end
 
   def destroy
+    @booking = Booking.find(params[:id].to_i)
     @booking.destroy
+    redirect_to user_superhero_bookings_path
   end
 
   private
