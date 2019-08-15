@@ -1,30 +1,50 @@
-<div class="container">
-
-  <h1 class="herotitle">Superheroes in Brussels</h1>
-
-  <div class="cardsbox">
-  <% @superheros.each do |superhero| %>
-    <%= link_to superhero_path(superhero) do %>
-      <div class="card">
-          <div class="card-trip">
-            <div class="card-image" style="background-image:url(<%= cl_image_path( superhero.image, :width => 900, :height => 600  , :crop => :thumb, :gravity => :face )  %>)"></div>
-            <div class="name">
-              <p><%= superhero.name %></p>
-            </div>
-            <div class="card-trip-infos">
-              <div class="text">
-                <p><%= superhero.power.name %></p>
-              </div>
-              <div class="distance">
-                <p>3km away</p>
-              </div>
-              <div class="price">
-                <p><%= superhero.price_per_day %> euro </p>
-              </div>
-            </div>
-          </div>
-      </div>
-    <% end %>
-  <% end %>
+<div class="filterbar">
+  <div class="toggle">
+    Display map:
+    <label id="maptoggle">
+      <input type="checkbox">
+      <span id="map_toggle_l" class="slider round"></span>
+    </label>
   </div>
+</div>
+<div class="main-container">
+  <div class="content_heros">
+    <h1 class="herotitle">Superheroes in Brussels</h1>
+    <div class="cardsbox">
+    <% @superheros.each do |superhero| %>
+      <%= link_to superhero_path(superhero) do %>
+        <div class="card">
+            <div class="card-trip">
+              <div class="card-image" style="background-image:url(<%= cl_image_path( superhero.image, :width => 900, :height => 600  , :crop => :thumb, :gravity => :face )  %>)"></div>
+
+              <div class="name">
+                <p><%= superhero.name %></p>
+              </div>
+              <div class="card-trip-infos">
+                <div class="text">
+                  <p><%= superhero.power.name %></p>
+                </div>
+                <div class="distance">
+                  <p>3km away</p>
+                </div>
+                <div class="price">
+                  <p><%= superhero.price_per_day %> euro </p>
+                </div>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+   <div
+      id="map"
+      style="width: 40%;
+      height: 100vh;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+
+
+
 </div>
