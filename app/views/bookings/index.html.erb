@@ -58,8 +58,8 @@
 
 
               <% if booking.superhero.user == @user %>
-                <%= link_to "Accept", user_superhero_booking_path(id: booking.id, accepted: true), :action => "add_to_cart", method: "patch" %>
-                <%= link_to "Refuse", user_superhero_booking_path(id: booking.id, accepted: "false"), :action => "add_to_cart", method: "patch" %>
+                <%= link_to "Accept", user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: true), method: "patch" %>
+                <%= link_to "Refuse", user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: "false"),method: "patch" %>
 
               <% else %>
                 <p>Waiting for approval from <%= booking.superhero.name %></p>

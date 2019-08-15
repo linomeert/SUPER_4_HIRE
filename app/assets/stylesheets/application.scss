@@ -23,3 +23,18 @@
 h1, h2, h3, h4, h5 {
   font-family: $my-font
 }
+
+body {
+background: #f6fcff;
+
+}
+
+
+a {
+  color:#e32513;
+  text-decoration:none;
+}
+a:hover {
+  background:#ff4700;
+  text-decoration:none;
+}
