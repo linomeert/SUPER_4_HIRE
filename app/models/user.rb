@@ -10,5 +10,7 @@ class User < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :superheros, dependent: :destroy
+  mount_uploader :photo, PhotoUploader
+
   #has_many :powers, through: :superheros
 end

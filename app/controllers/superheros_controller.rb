@@ -4,9 +4,17 @@ class SuperherosController < ApplicationController
 
   def index
     if params[:query].present?
-      @superheros = Superhero.where("name ILIKE ?", "%#{params[:query]}%")
+      @superheros = Superhero.geocoded.where("name ILIKE ?", "%#{params[:query]}%")
     else
-      @superhero = Superhero.all
+      @superheros = Superhero.geocoded
+    end
+
+    @markers = @superheros.map do |superhero|
+      {
+        lat: superhero.latitude,
+        lng: superhero.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { superhero: superhero })
+      }
     end
   end
 
@@ -55,6 +63,6 @@ class SuperherosController < ApplicationController
   def superhero_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:superhero).permit(:name, :bio, :image, :price_per_day, :power, :image)
+    params.require(:superhero).permit(:name, :bio, :image, :price_per_day, :power, :image, :address)
   end
 end
