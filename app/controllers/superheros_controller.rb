@@ -5,7 +5,7 @@ class SuperherosController < ApplicationController
   def index
 
     if params[:query].present?
-      @superheros = Superhero.geocoded.where("name ILIKE ?", "%#{params[:query]}%")
+      @superheros = Superhero.geocoded.search_by_name_and_power(params[:query])
     else
       @superheros = Superhero.geocoded
     end

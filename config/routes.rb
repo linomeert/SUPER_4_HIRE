@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   end
 
   resources :superheros , only: [:show, :index]
-  resources :bookings, only: [:destroy]
+
 end
