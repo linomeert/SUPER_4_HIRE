@@ -11,21 +11,13 @@ h1.herotitle {
 }
 .cardsbox {
 
- display: flex;
- flex-direction: row;
- flex-wrap: wrap;
- justify-content: flex-start;
- align-items: flex-start;
- align-content: flex-start | space-between;
- margin-top: 70px;
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
 
 }
 
 .card {
-
-  width: 300px;
-  margin: 25px;
-
 
 }
 
