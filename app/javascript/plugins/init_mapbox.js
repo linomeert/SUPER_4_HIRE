@@ -8,7 +8,7 @@ const buildMap = () => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
+    style: 'mapbox://styles/linomeert/cjzcmp32v0ez01cpsw5tn4w26'
   });
 };
 
@@ -42,10 +42,18 @@ const initMapbox = () => {
 export { initMapbox };
 
 
-const togglebtn = document.getElementById('maptoggle');
+const togglebtn = document.getElementById('map_toggle_l');
+
+const cardsbox = document.querySelector('.cardsbox')
+
+const card = document.querySelector('.card')
+
+
 
 
 togglebtn.addEventListener("click", (event) => {
   mapElement.classList.toggle("hide");
+  cardsbox.classList.toggle("addcolumns");
+  cards.classList.toggle("changewidth");
 });
 

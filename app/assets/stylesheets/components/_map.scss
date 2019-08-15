@@ -25,3 +25,16 @@
 .hide {
   display:none;
 }
+
+
+@media(max-width: 992px) {
+  #map {
+    display:none;
+  }
+
+  .toggle {
+    display:none;
+  }
+}
+
+

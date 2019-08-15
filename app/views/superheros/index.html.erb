@@ -1,46 +1,63 @@
 <div class="filterbar">
-  <div class="toggle">
-    Display map:
-    <label id="maptoggle">
-      <input type="checkbox">
-      <span id="map_toggle_l" class="slider round"></span>
-    </label>
-  </div>
+
+  <div class="searchform">
+  <%= form_tag superheros_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a superhero"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
+<div class="toggle">
+  <span class="label">Hide map:</span>
+  <label id="maptoggle">
+    <input type="checkbox">
+    <span id="map_toggle_l" class="slider round"></span>
+  </label>
+</div>
+
 </div>
 <div class="main-container">
   <div class="content_heros">
     <h1 class="herotitle">Superheroes in Brussels</h1>
     <div class="cardsbox">
-    <% @superheros.each do |superhero| %>
-      <%= link_to superhero_path(superhero) do %>
-        <div class="card">
-            <div class="card-trip">
-              <div class="card-image" style="background-image:url(<%= cl_image_path( superhero.image, :width => 900, :height => 600  , :crop => :thumb, :gravity => :face )  %>)"></div>
 
-              <div class="name">
-                <p><%= superhero.name %></p>
-              </div>
-              <div class="card-trip-infos">
-                <div class="text">
-                  <p><%= superhero.power.name %></p>
+      <% if @superheros.empty? %>
+      <p style="text-align:center;">Sorry, no superheros found.</p>
+      <% else %>
+        <% @superheros.each do |superhero| %>
+          <%= link_to superhero_path(superhero) do %>
+            <div class="card">
+                <div class="card-trip">
+                  <div class="card-image" style="background-image:url(<%= cl_image_path( superhero.image, :width => 900, :height => 600  , :crop => :thumb, :gravity => :face )  %>)"></div>
+
+                  <div class="name">
+                    <p><%= superhero.name %></p>
+                  </div>
+                  <div class="card-trip-infos">
+                    <div class="text">
+                      <p><%= superhero.power.name %></p>
+                    </div>
+                    <div class="distance">
+                      <p>3km away</p>
+                    </div>
+                    <div class="price">
+                      <p><%= superhero.price_per_day %> euro </p>
+                    </div>
+                  </div>
                 </div>
-                <div class="distance">
-                  <p>3km away</p>
-                </div>
-                <div class="price">
-                  <p><%= superhero.price_per_day %> euro </p>
-                </div>
-              </div>
             </div>
-        </div>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </div>
    <div
       id="map"
-      style="width: 40%;
-      height: 100vh;"
+      style="width: 40%;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
