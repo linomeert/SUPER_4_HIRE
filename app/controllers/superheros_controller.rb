@@ -3,7 +3,11 @@ class SuperherosController < ApplicationController
   before_action :set_superhero, only: [:show, :edit, :update]
 
   def index
-    @superheros = Superhero.all
+    if params[:query].present?
+      @superheros = Superhero.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @superhero = Superhero.all
+    end
   end
 
   def new
