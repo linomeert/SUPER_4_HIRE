@@ -1,16 +1,19 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="search-home">
- <%= form_tag superheros_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a superhero"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-  </div>
 
   <div class="carousel-inner">
+
+     <div class="search-home">
+      <h1>Find your super hero!</h1>
+    <%= form_tag superheros_path, method: :get do %>
+       <%= text_field_tag :query,
+         params[:query],
+         class: "form-control",
+         placeholder: "Find a superhero"
+       %>
+       <%= submit_tag "Search", class: "btn btn-primary" %>
+     <% end %>
+     </div>
+
     <div class="carousel-item active">
       <%= image_tag "banner1.jpg", :class => "d-block w-100" %>
     </div>
@@ -24,18 +27,4 @@
 </div>
 
 
-
-    <% @superheros.each do |s| %>
-      <%= s.name  %> <br>
-    <% end %>
-
-
-    <%= form_tag superheros_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a superhero"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
 

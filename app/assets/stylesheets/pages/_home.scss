@@ -1,4 +1,30 @@
 // Specific CSS for your home-page
 .search-home {
-  width: 25%;
+    width: 50%;
+    position: absolute;
+    z-index: 99999;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    background:white;
+    border-radius: 4px;
+    padding:30px;
+    top:20%;
+    height:200px;
 }
+
+
+.search-home .btn.btn-primary {
+
+    margin-top: 6px;
+}
+
+
+
+@media(max-width: 992px) {
+  .search-home {
+    width:80%
+  }
+}
+
