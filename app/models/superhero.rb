@@ -8,4 +8,5 @@ class Superhero < ApplicationRecord
   validates :price_per_day, presence: true
   validates :bio, presence: true
   validates :image, presence: true
+  mount_uploader :image, PhotoUploader
 end

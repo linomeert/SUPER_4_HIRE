@@ -7,7 +7,7 @@
     <%= link_to superhero_path(superhero) do %>
       <div class="card">
           <div class="card-trip">
-            <div class="card-image" style="background-image:url(<%= superhero.image %>)"></div>
+            <div class="card-image" style="background-image:url(<%= cl_image_path( superhero.image, :width => 900, :height => 600  , :crop => :thumb, :gravity => :face )  %>)"></div>
             <div class="name">
               <p><%= superhero.name %></p>
             </div>
