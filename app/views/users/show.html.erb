@@ -1,7 +1,7 @@
 <body>
   <div class="container">
     <div class="login_box">
-      <div class="avatar-large prof-image" style="background-image:url(<%= @user.photo %>);"></div>
+      <div class="avatar-large prof-image" style="background-image:url(<%= cl_image_path @user.photo %>);"></div>
 <h1><%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></h1>
 <h2><%= @user.bio.capitalize %></h2>
 <h2><%= @user.email %></h2>

@@ -3,7 +3,8 @@
   <%= f.input :bio %>
   <%= f.input :address %>
   <%= f.input :image %>
+  <%= f.input :image_cache, as: :hidden %>
   <%= f.association :power %>
   <%= f.input :price_per_day %>
-  <%= f.submit "Save", class: "btn btn-primary newbtn" %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>
