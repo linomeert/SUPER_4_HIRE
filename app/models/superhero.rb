@@ -12,4 +12,14 @@ class Superhero < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   mount_uploader :image, PhotoUploader
+
+  include PgSearch
+  pg_search_scope :search_by_name_and_power,
+    against: [ :name ],
+    associated_against: {
+      power: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
