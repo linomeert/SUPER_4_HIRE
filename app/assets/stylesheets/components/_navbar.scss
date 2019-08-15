@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: black;
+  background: #130f0f;
+  border-bottom:2px solid black;
 }
 .navbar-light .navbar-nav .nav-link {
   color: white;
@@ -13,4 +14,10 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 250px;
+}
+
+
+.nav-item a:hover {
+  color:#e32513 !important;
+  background:none;
 }

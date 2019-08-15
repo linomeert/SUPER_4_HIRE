@@ -1,39 +1,35 @@
+<div class="heroimg" style="background:url(<%= cl_image_path @superhero.image  %>)"></div>
+
 <div class="container">
-  <div class="container-profile">
-    <div class="container-info">
-      <div class="profile-text">
-         <div class="superhero-name">
-           <p><%= @superhero.name %></p>
-         </div>
-         <div class="power">
-           <h2> POWER <h2>
-           <p><%= @superhero.power.name %></p>
-         </div>
-         <div class="hero-info">
-            <h3><%= @superhero.bio %><h3>
-         </div>
+  <div class="row">
+    <div class="col-sm-100 col-lg-7">
+      <div class="container-profile">
+        <div class="container-info">
+          <div class="profile-text">
+            <h1><%= @superhero.name %></h1>
+            <h2> Power </h2>
+            <p><%= @superhero.power.name %></p>
+            <h2> About <%= @superhero.name %> </h2>
+            <p><%= @superhero.bio %></p>
+
+          </div>
+        </div>
       </div>
-      <div class="heroimg" style="background:url(<%= cl_image_path @superhero.image  %>)"></div>
-
-
-</div>
-</div>
-    <div class="form_add_booking">
-      <%= simple_form_for [current_user, @superhero, @booking],  url: user_superhero_bookings_path(current_user, @superhero), method: :post do |f| %>
-        <%= f.input :description %>
-        <br>
-        <%= f.input :start_date %>
-        <br>
-        <%= f.input :end_date %>
-        <br>
-        <br>
-        <%= f.submit "Save", class: "btn btn-primary newbtn" %>
-      <% end %>
-
-
-</div>
-</div>
-</div>
-</p>
-</p>
+    </div>
+    <div class="col-sm-100 col-lg-5">
+      <div class="form_add_booking">
+        <h2>Book now!</h2>
+        <%= simple_form_for [current_user, @superhero, @booking],  url: user_superhero_bookings_path(current_user, @superhero), method: :post do |f| %>
+          <%= f.input :description %>
+          <br>
+          <%= f.input :start_date %>
+          <br>
+          <%= f.input :end_date %>
+          <br>
+          <br>
+          <%= f.submit "Save", class: "btn btn-primary newbtn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
