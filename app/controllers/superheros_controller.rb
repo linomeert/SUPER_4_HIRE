@@ -3,6 +3,7 @@ class SuperherosController < ApplicationController
   before_action :set_superhero, only: [:show, :edit, :update]
 
   def index
+    if params[:query]
     @superheros = Superhero.all
   end
 

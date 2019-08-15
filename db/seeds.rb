@@ -9,7 +9,7 @@
 
 puts "seeding new powers"
 
-fligh = Power.new(
+flight = Power.new(
     name: "Flight",
     description: "an act or instance of passing through the air by the use of wings or anything else"
 )
