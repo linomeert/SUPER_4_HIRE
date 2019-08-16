@@ -1,6 +1,6 @@
 <div class="container dashboard">
 
-  <h1 class="shadow">Bookings for <%= @user.first_name %></h1>
+  <h1 class="shadowt">Bookings for <%= @user.first_name %></h1>
 
   <div class="bookings">
     <% if @rejected_bookings %>
@@ -23,7 +23,7 @@
 
   </div>
 
-  <h2 class="shadow">Pending bookings</h2>
+  <h2 class="shadowt">Pending bookings</h2>
 
   <% if @pending_bookings.empty? %>
     <p>No pending bookings</p>
@@ -82,7 +82,7 @@
       <% end %>
     </div>
   <% end %>
-  <h2 class="shadow">Upcoming bookings</h2>
+  <h2 class="shadowt">Upcoming bookings</h2>
 
   <% if @accepted_bookings.empty? %>
     <p>No accepted bookings</p>
@@ -125,7 +125,7 @@
      </div>
   <% end %>
   <% if @past_bookings %>
-    <h2 class="shadow">Past bookings</h2>
+    <h2 class="shadowt">Past bookings</h2>
     <div class="bookings">
       <% @past_bookings.each do |booking| %>
           <div class="booking_box">
