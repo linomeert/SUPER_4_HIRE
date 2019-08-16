@@ -52,6 +52,7 @@ class SuperherosController < ApplicationController
   end
 
   def destroy
+
     @superhero.destroy
     redirect_to user_path(current_user)
   end

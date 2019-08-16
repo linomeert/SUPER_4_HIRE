@@ -63,14 +63,7 @@
 
 
 
-              <% if booking.superhero.user == @user %>
-                <%= link_to user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: true), method: "patch" do %>
-                <i class="fas fa-check-circle"></i>
-                <% end  %>
-                <%= link_to user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: "false"),method: "patch" do %>
-                <i class="fas fa-times-circle"></i>
-                <% end %>
-              <% else %>
+              <% if booking.superhero.user != @user %>
                 <p>Waiting for approval from <%= booking.superhero.name %></p>
                 <%= link_to user_superhero_booking_path(@user, booking.superhero, booking), class: "cancel", method: :delete do %>
                   <i class="fas fa-times-circle"></i>  Cancel booking
