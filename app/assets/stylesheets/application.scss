@@ -20,6 +20,16 @@
   background-position: center center !important;
 }
 
+a:hover{
+  transition:all .3s;
+ .card-image {
+
+    background-size: 120%;
+
+
+    height: 200px
+}
+}
 h1, h2, h3, h4, h5 {
   font-family: $my-font;
   color:white;
@@ -46,4 +56,9 @@ a {
 a:hover {
   color:#ff4700;
   text-decoration:none;
+}
+
+
+.navbar-brand:hover {
+  background:none;
 }

@@ -6,8 +6,13 @@ h1.herotitle {
 }
 
 .card-image {
-    background-size: cover;
-    height: 200px
+
+    background-size: 100%;
+    height: 200px;
+    background-position: center;
+
+    height: 200px;
+    transition:all .3s;
 }
 
 .small_container {
