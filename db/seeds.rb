@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
   # Character.create(name: 'Luke', movie: movies.first
 
-puts "creating user"
-Superhero.destroy_all
 
+puts "creating user"
+
+Superhero.destroy_all
 Power.destroy_all
 User.destroy_all
+
 user1 = User.create(
     email: "test@gmail.com",
     password: "123456",
@@ -145,28 +147,28 @@ p user5 = User.create(
 p iron_man = Superhero.create(
     name: 'Iron Man',
     bio: 'Very strong dude',
-    remote_image_url: 'https://i.pinimg.com/736x/e9/79/01/e97901ac963823878b70024959d56743.jpg',
-    address: Faker::Address.street_address,
+    remote_image_url: 'http://nerdist.com/wp-content/uploads/2016/03/Iron-Man.jpg',
+    address: "rue de l'abbaye, bruxelles",
     price_per_day: 20,
     user: User.all.sample,
     power: great_strength
 )
 
-p captain_america = Superhero.create(
-    name: 'Captain america',
-    bio: 'Very strong dude',
-    remote_image_url: 'https://i.pinimg.com/736x/e9/79/01/e97901ac963823878b70024959d56743.jpg',
-    address:  Faker::Address.street_address,
+p joker = Superhero.create(
+    name: 'Joker',
+    bio: 'The Joker possesses no superhuman abilities, instead using his expertise in chemical engineering to develop poisonous or lethal concoctions, and thematic weaponry, including razor-tipped playing cards, deadly joy buzzers, and acid-spraying lapel flowers.',
+    remote_image_url: 'http://nerdist.com/wp-content/uploads/2016/03/Joker.jpg',
+    address:  "place sainte catherine, bruxelles",
     price_per_day: 50,
     user: User.all.sample,
-    power_id: indestructible
+    power: incredible_luck
 )
 
 p hulk = Superhero.create(
     name: 'Hulk',
     bio: 'Banner is physically transformed into the Hulk when subjected to emotional stress, at or against his will, often leading to destructive rampages and conflicts.',
     remote_image_url:'http://nerdist.com/wp-content/uploads/2016/03/Hulk2.jpg',
-    address: Faker::Address.street_address,
+    address: "rue des celtes, etterbeek",
     price_per_day: 70,
     user: User.all.sample,
     power: metamorphosis
@@ -176,7 +178,7 @@ p superman = Superhero.create!(
     name: 'Superman',
     bio: 'Clark developed various superhuman abilities, such as incredible strength and impervious skin. Beware of the Kryptonite....',
     remote_image_url:'http://nerdist.com/wp-content/uploads/2016/03/Superman.jpg',
-    address: Faker::Address.street_address,
+    address: "rue mercelis, ixelles",
     price_per_day: 85,
     user: User.all.sample,
     power: flight
@@ -186,17 +188,17 @@ p batman = Superhero.create(
     name: 'Batman',
     bio: 'Batman operates in the fictional Gotham City with assistance from various supporting characters, including his butler Alfred, police commissioner Jim Gordon, and vigilante allies such as Robin. Unlike most superheroes, Batman does not possess any inhuman superpowers. He does, however, possess a genius-level intellect, is a peerless martial artist, and his vast wealth affords him an extraordinary arsenal of weaponry and equipment. ',
     remote_image_url: 'http://nerdist.com/wp-content/uploads/2016/03/Batman.jpg',
-    address: Faker::Address.street_address,
+    address: "chaussée de wavre, auderghem",
     price_per_day: 75,
     user: User.all.sample,
     power: great_strength
 )
 
-p nigthwing = Superhero.create(
+p flash = Superhero.create(
     name: 'Flash',
     bio: 'Flash can move, think, and react at light speeds as well as having superhuman endurance that allows them to run incredible distances.',
     remote_image_url: 'http://nerdist.com/wp-content/uploads/2016/03/Flash.jpg',
-    address: Faker::Address.street_address,
+    address: "rue des betteraves, anderlecht",
     price_per_day: 65,
     user: User.all.sample,
     power: high_velocity

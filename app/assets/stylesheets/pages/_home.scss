@@ -28,3 +28,30 @@
   }
 }
 
+.home-img img {
+    width: 100%;
+
+}
+
+.container.home .row {
+  padding: 20px 20px;
+}
+
+.bg-home {
+  background-color:   #E8E8E8;
+}
+
+.btn-home {
+  float: right;
+}
+
+.cardsbox-home {
+
+  display: flex;
+  flex-position: row;
+  align-content: space-between;
+  text-align: center;
+}
+.cardsbox-home a {
+  margin: 0px 20px;
+}
