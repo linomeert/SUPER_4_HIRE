@@ -27,3 +27,8 @@ body{
     grid-template-columns: 1fr;
   }
 }
+
+
+.login_box h1, .login_box h2, .login_box h3, .login_box h4, .login_box h5, .login_box p {
+  color:inherit;
+}

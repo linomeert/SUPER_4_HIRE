@@ -20,6 +20,10 @@ h1.herotitle {
 color:inherit;
 }
 
+.card-trip h1, .card-trip h2, .card-trip h3, .card-trip h4, .card-trip h5, .card-trip p {
+  color:inherit;
+}
+
 .addcolumns {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;

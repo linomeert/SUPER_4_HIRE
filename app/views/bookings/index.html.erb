@@ -1,5 +1,6 @@
 <div class="container dashboard">
-  <h1>Bookings for <%= @user.first_name %></h1>
+
+  <h1 class="shadow">Bookings for <%= @user.first_name %></h1>
 
   <div class="bookings">
     <% if @rejected_bookings %>
@@ -22,7 +23,7 @@
 
   </div>
 
-  <h2>Pending bookings</h2>
+  <h2 class="shadow">Pending bookings</h2>
 
   <% if @pending_bookings.empty? %>
     <p>No pending bookings</p>
@@ -33,9 +34,15 @@
 
           <div class="booking_box">
             <div class="row">
-              <div class="col-md-100 col-lg-4">
+              <div class="col-md-100 col-lg-4 bookingimgbox">
                 <% if booking.superhero.user == @user %>
                   <div class="booking_img" style="background: url(<%= booking.user.photo %>)"></div>
+                  <%= link_to user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: true), method: "patch", class: "accept" do %>
+                  <i class="fas fa-check-circle"></i>
+                  <% end %>
+                  <%= link_to user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: "false"), method: "patch",  class: "refuse" do %>
+                  <i class="fas fa-times-circle"></i>
+                  <% end %>
                 <% else %>
                   <div class="booking_img" style="background: url(<%= booking.superhero.image %>)"></div>
                 <% end %>
@@ -43,25 +50,26 @@
               <div class="col-md-100 col-lg-7">
                 <h5>
                   <% if booking.superhero.user == @user %>
-                    Accept booking with user <%= booking.user.first_name %>
+                    New booking request with user <%= booking.user.first_name %>
                   <% else %>
-                    Booking with superhero <%= booking.superhero.name %>
+                    Pending booking with superhero <%= booking.superhero.name %>
                   <% end %>
                 </h5>
 
                 <p><%= booking.description %></p>
-                <ul>
-                  <li>from: <%= booking.start_date %></li>
-                  <li>to :<%= booking.end_date %></li>
-                </ul>
+                <div class="datebox"><i class="far fa-calendar-alt"></i>
+                  from <span><%= booking.start_date.to_formatted_s(:short) %></span> to <span><%= booking.end_date.to_formatted_s(:short)%></span>
+                </div>
 
 
 
               <% if booking.superhero.user == @user %>
-                <%= link_to "Accept", user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: true), method: "patch" %>
-                <%= link_to "Refuse", user_superhero_booking_path(booking, booking.superhero, id: booking.id, accepted: "false"),method: "patch" %>
+
               <% else %>
                 <p>Waiting for approval from <%= booking.superhero.name %></p>
+                <%= link_to user_superhero_booking_path(@user, booking.superhero, booking), class: "cancel", method: :delete do %>
+                  <i class="fas fa-times-circle"></i>  Cancel booking
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -69,7 +77,7 @@
       <% end %>
     </div>
   <% end %>
-  <h2>Upcoming bookings</h2>
+  <h2 class="shadow">Upcoming bookings</h2>
 
   <% if @accepted_bookings.empty? %>
     <p>No accepted bookings</p>
@@ -96,10 +104,15 @@
                   <% end %>
                 </h5>
                 <p><%= booking.description %></p>
-                <ul>
-                  <li>from: <%= booking.start_date %></li>
-                  <li>to :<%= booking.end_date %></li>
-                </ul>
+                <div class="datebox"><i class="far fa-calendar-alt"></i>
+                                  from <span><%= booking.start_date.to_formatted_s(:short) %></span> to <span><%= booking.end_date.to_formatted_s(:short)%></span>
+                                </div>
+                  <% if booking.superhero.user == @user %>
+                    <%= link_to user_superhero_booking_path(@user, booking.superhero, booking), class: "cancel", method: :delete do %>
+                    <i class="fas fa-times-circle"></i> Cancel booking
+                    <% end %>
+                  <% end %>
+
               </div>
             </div>
           </div>
@@ -107,7 +120,7 @@
      </div>
   <% end %>
   <% if @past_bookings %>
-    <h2>Past bookings</h2>
+    <h2 class="shadow">Past bookings</h2>
     <div class="bookings">
       <% @past_bookings.each do |booking| %>
           <div class="booking_box">
@@ -129,10 +142,9 @@
                   <% end %>
                 </h5>
                 <p><%= booking.description %></p>
-                <ul>
-                  <li>from: <%= booking.start_date %></li>
-                  <li>to :<%= booking.end_date %></li>
-                </ul>
+                <div class="datebox"><i class="far fa-calendar-alt"></i>
+                                  from <span><%= booking.start_date.to_formatted_s(:short) %></span> to <span><%= booking.end_date.to_formatted_s(:short)%></span>
+                                </div>
               </div>
             </div>
           </div>
