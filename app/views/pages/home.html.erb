@@ -26,6 +26,77 @@
   </div>
 </div>
 
+<div class="bg-home">
+  <div class="container home">
+    <div class="row">
+
+
+      <div class="col-6 home-img">
+        <%= image_tag('Masks.jpg') %>
+      </div>
+
+      <div class="col-6">
+        <h2>Best superheroes</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+         <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-6">
+        <h2>Bring Your Skill</h2>
+        <p>Le dahu (parfois orthographié dahut) est un animal sauvage imaginaire vivant dans les zones montagneuses, environnement qui a influé sur son évolution physique au fil des générations.
+        Le dahu est également connu sous les noms de dairi dans le Jura, darou dans les Vosges, darhut en Bourgogne, tamarou dans l'Aubrac et l'Aveyron, tamarro en Catalogne et Andorre, ou encore rülbi (prononcer ruèlbi) dans le Haut-Valais. Son aspect caractéristique réside dans le fait qu'il a deux pattes latérales plus courtes que les deux autres, afin de bien se tenir dans les pentes montagneuses.
+
+        <br>
+        <br>
+
+        <%= link_to "Login", new_user_session_path, class: "btn btn-primary btn-home" %>
+
+      </div>
+
+      <div class="col-6 home-img">
+        <%= image_tag('GreenArrow.jpg') %>
+      </div>
+    </div>
+  </div>
+  <div class="home-cards">
+     <div class="cardsbox-home">
+
+      <% if @superheros.empty? %>
+      <p style="text-align:center;">Sorry, no superheros found.</p>
+      <% else %>
+        <% @superheros.each do |superhero| %>
+          <%= link_to superhero_path(superhero) do %>
+            <div class="card">
+                <div class="card-trip">
+                  <div class="card-image" style="background-image:url(<%= cl_image_path( superhero.image, :width => 900, :height => 600  , :crop => :thumb, :gravity => :face )  %>)"></div>
+
+                  <div class="name">
+                    <h4><%= superhero.name %></h4>
+                  </div>
+                  <div class="card-trip-infos">
+                    <div class="text">
+                      <p><%= superhero.power.name %></p>
+                    </div>
+                    <div class="distance">
+                      <p>3km away</p>
+                    </div>
+                    <div class="price">
+                      <p><%= superhero.price_per_day %> euro </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
