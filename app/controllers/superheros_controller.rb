@@ -1,6 +1,6 @@
 class SuperherosController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_superhero, only: [:show, :edit, :update]
+  before_action :set_superhero, only: [:show, :edit, :update, :destroy]
 
   def index
 
@@ -53,6 +53,7 @@ class SuperherosController < ApplicationController
 
   def destroy
     @superhero.destroy
+    redirect_to user_path(current_user)
   end
 
   private
