@@ -1,23 +1,32 @@
 // Specific CSS for your home-page
 .search-home {
-    width: 50%;
+    width: 40%;
     position: absolute;
     z-index: 99999;
-    left: 0;
-    right: 0;
+    /* left: 0; */
+    left: 50px;
     margin: 0 auto;
-    text-align: center;
-    background:white;
+    background: white;
     border-radius: 4px;
-    padding:30px;
-    top:20%;
-    height:200px;
+    padding: 30px;
+    /* top: 20%; */
+    bottom: 50px;
+}
+
+.search-home h1, .search-home h2, .search-home h3, .search-home h4, .search-home h5, .search-home p {
+  color:inherit;
 }
 
 
 .search-home .btn.btn-primary {
 
     margin-top: 6px;
+}
+
+.carousel {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
 }
 
 

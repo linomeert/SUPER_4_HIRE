@@ -31,11 +31,20 @@ a:hover{
 }
 }
 h1, h2, h3, h4, h5 {
-  font-family: $my-font
+  font-family: $my-font;
+  color:white;
+
+}
+
+h1.shadow, h2.shadow {
+  text-shadow: 1px 1px 2px black;
+}
+p {
+  color:white;
 }
 
 body {
-background: #f6fcff;
+background: #0b2f42;
 
 }
 
