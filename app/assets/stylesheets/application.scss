@@ -62,3 +62,14 @@ a:hover {
 .navbar-brand:hover {
   background:none;
 }
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: #51a882 !important;
+}
+.mapboxgl-popup-content {
+  background:#51a882 !important;
+}
+
+.mapboxgl-popup-content a {
+  color:white !important;
+}
+
